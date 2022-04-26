@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up page</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign up</h1>
+    <form id="login" action="">
+        <input id="name" type="text" placeholder="Enter Full name">
+        <input id="email" type="text" placeholder="Enter email">
+        <input id="password" type="text" placeholder="Enter Password">
+        <input type="submit">
+        <button> <a href="loginpage.html">LOG IN</a></button>
+    </form>
+</body>
+</html>
+
+<script>
+    document.querySelector("#login").addEventListener("submit", logFunction);
+
+    var userArr = JSON.parse(localStorage.getItem("userData")) || [];
+
+    function logFunction() {
+        event.preventDefault();
+
+        var userObject = {
+            userName: login.name.value,
+            userEmail: login.email.value,
+            userPassword: login.password.value,
+        };
+        userArr.push(userObject);
+        console.log(userArr);
+        localStorage.setItem("userData", JSON.stringify(userArr));
+    }
+</script>
