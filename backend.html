@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+
+    <style>
+        #navbar {
+            background-color: cadetblue;
+            display: flex;
+            padding: 20px;
+            justify-content: space-around;
+        }
+        #navbar > div {
+            font-size: 30px;
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        h2 {
+            margin-top: 50px;
+            text-align: center;
+        }
+        hr {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="navbar.html">Home</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+        <div> <a href="backend.html">Backend</a></div>
+    </div>
+    <form id="invForm" action="">
+        <input id="imgURL" type="text" placeholder="Enter Image URL" />
+        <input id="name" type="text" placeholder="Enter investor name" />
+        <input id="role" type="text" placeholder="Enter investor role" />
+        <input id="logo" type="text" placeholder="Enter company logo URL"/>
+        <input type="submit" />
+    </form>
+</body>
+</html>
+
+<script>
+    document.querySelector("#invForm").addEventListener("submit", invFunction);
+
+    var invArr = JSON.parse(localStorage.getItem("invData")) || [];
+
+    function invFunction() {
+        event.preventDefault();
+
+        var invObject = {
+            invImg: invForm.imgURL.value,
+            invName: invForm.name.value,
+            invRole: invForm.role.value,
+            invLogo: invForm.logo.value
+        };
+
+        invArr.push(invObject);
+        console.log(invArr);
+        localStorage.setItem("invData", JSON.stringify(invArr));
+    }
+</script>
